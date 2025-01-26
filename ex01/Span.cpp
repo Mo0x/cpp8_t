@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:22:09 by mgovinda          #+#    #+#             */
-/*   Updated: 2025/01/26 19:52:15 by mgovinda         ###   ########.fr       */
+/*   Updated: 2025/01/26 19:59:09 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,10 +34,22 @@ Span::Span(const Span &src) :
 
 Span &Span::operator=(const Span &src)
 {
-	if (this != *src)
+	if (this != &src)
 	{
 		this->m_v = src.m_v;
 		this->m_size = src.m_size;
 	}
 	return *this;
+}
+
+Span::~Span()
+{
+	return ;
+}
+
+void	Span::addNumber(int n);
+{
+	if (this->m_v.size() > this->m_size - 1)
+		throw std::overflow_error("Cannot add more numbers: Span is full.");
+	this->m_v.pushback(n);
 }

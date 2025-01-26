@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:53:51 by mgovinda          #+#    #+#             */
-/*   Updated: 2025/01/26 19:41:12 by mgovinda         ###   ########.fr       */
+/*   Updated: 2025/01/26 19:56:09 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 class Span
 {
 	private:
-	std::vector<unsigned int>	m_v;
+	std::vector<int>	m_v;
 	unsigned int				m_size;
 
 	public:
@@ -32,10 +32,10 @@ class Span
 
 	//get set
 	unsigned int				get_size();
-	std::vector<unsigned int>	get_v();
+	std::vector<int>	get_v();
 
 	//member func
-	void			addNumber(unsigned int);
+	void			addNumber(int n);
 	unsigned int	shortestSpan();
 	unsigned int	longestSpan();
 
