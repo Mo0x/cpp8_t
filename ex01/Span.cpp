@@ -6,11 +6,12 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:22:09 by mgovinda          #+#    #+#             */
-/*   Updated: 2025/01/26 19:59:09 by mgovinda         ###   ########.fr       */
+/*   Updated: 2025/01/28 19:05:22 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <iostream>
+#include <algorithm>
 #include "Span.hpp"
 
 Span::Span() :
@@ -47,9 +48,29 @@ Span::~Span()
 	return ;
 }
 
-void	Span::addNumber(int n);
+void	Span::addNumber(int n)
 {
 	if (this->m_v.size() > this->m_size - 1)
 		throw std::overflow_error("Cannot add more numbers: Span is full.");
-	this->m_v.pushback(n);
+	this->m_v.push_back(n);
+}
+
+unsigned int Span::shortestSpan(void)
+{
+	unsigned int ret;
+	std::vector<int> tmp = this->m_v;
+
+	if (this->m_v.size() < 2)
+		throw Span::NoSpanFound();
+	stable_sort(tmp.begin(), tmp.end());
+	ret = tmp.end() - tmp.begin();
+	for (auto n : tmp)
+	{
+
+	}
+}
+
+const char *Span::NoSpanFound::what() throw()
+{
+	return ("No span found");
 }
