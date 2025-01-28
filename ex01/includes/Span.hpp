@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 18:53:51 by mgovinda          #+#    #+#             */
-/*   Updated: 2025/01/26 19:56:09 by mgovinda         ###   ########.fr       */
+/*   Updated: 2025/01/28 19:36:41 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ class Span
 	class NoSpanFound : public std::exception
 	{
 		public:
-		virtual const char *what() throw();
-	}
+		virtual const char *what() const throw();
+	};
 };
 
 #endif
