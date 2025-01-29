@@ -2,3 +2,4 @@ a.out
 *.o
 easy_find
 span
+mutant_stack
