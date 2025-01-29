@@ -6,7 +6,7 @@
 /*   By: mgovinda <mgovinda@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/26 19:22:09 by mgovinda          #+#    #+#             */
-/*   Updated: 2025/01/28 19:37:17 by mgovinda         ###   ########.fr       */
+/*   Updated: 2025/01/29 19:43:14 by mgovinda         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,7 +57,7 @@ void	Span::addNumber(int n)
 
 unsigned int Span::shortestSpan(void)
 {
-	unsigned int ret;
+	int ret;
 	std::vector<int> tmp = this->m_v;
 
 	if (this->m_v.size() < 2)
@@ -65,28 +65,30 @@ unsigned int Span::shortestSpan(void)
 	std::stable_sort(tmp.begin(), tmp.end());
 
 	ret = tmp.end() - tmp.begin();
-	auto n = tmp.begin();
-	auto m = tmp.begin() + 1;
+	std::vector<int>::iterator n = tmp.begin();
+	std::vector<int>::iterator m = tmp.begin() + 1;
 	while (m != tmp.end())
 	{
-		if (m - n < ret)
-			ret = m - n;
+		if (*m - *n < ret)
+			ret = *m - *n;
 		n++;
 		m++;
 	}
-	return (ret);
+	return static_cast<unsigned int>(ret);
 }
 
 unsigned int Span::longestSpan(void)
 {
+	if (this->m_v.size() < 2)
+		throw Span::NoSpanFound();
 	std::vector<int> tmp = this->m_v;
-	if (this->m.size() < 2)
+	if (this->m_v.size() < 2)
 		throw Span::NoSpanFound();
 	std::stable_sort(tmp.begin(), tmp.end());
-	return (tmp.end() - tmp.begin());
+	return (tmp.back() - tmp.front());
 }
 
-const char *Span::NoSpanFound::what() throw()
+const char *Span::NoSpanFound::what() const throw()
 {
 	return ("No span found");
 }
